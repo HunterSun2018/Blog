@@ -43,9 +43,6 @@ namespace Blog.ViewModels.SchoolVMs
         public override IOrderedQueryable<School_View> GetSearchQuery()
         {
             var query = DC.Set<School>()
-                .CheckContain(Searcher.SchoolCode, x=>x.SchoolCode)
-                .CheckContain(Searcher.SchoolName, x=>x.SchoolName)
-                .CheckEqual(Searcher.SchoolType, x=>x.SchoolType)
                 .Select(x => new School_View
                 {
 				    ID = x.ID,

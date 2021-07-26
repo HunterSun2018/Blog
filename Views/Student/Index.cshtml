@@ -1,8 +1,8 @@
-﻿@model Blog.ViewModels.SchoolVMs.SchoolListVM
+﻿@model Blog.ViewModels.StudentVMs.StudentListVM
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:searchpanel vm="@Model" reset-btn="true">
 <wt:row items-per-row="ItemsPerRowEnum.Three">
 </wt:row>
 </wt:searchpanel>
-<wt:grid vm="@Model" url="/School/Search"/>
+<wt:grid vm="@Model" url="/Student/Search"/>

@@ -11,6 +11,9 @@ namespace Blog
     {
         public DbSet<FrameworkUser> FrameworkUsers { get; set; }
         public DbSet<School> Schools { get; set; }
+        public DbSet<Major> Majors { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<StudentMajor> StudentMajors { get; set; }
 
         public DataContext(CS cs)
              : base(cs)
@@ -29,6 +32,27 @@ namespace Blog
 
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+            .Entity<Student>()
+            .HasMany(s => s.Majors)
+            .WithMany(m => m.Students)
+            .UsingEntity<StudentMajor>(
+                j => j.HasOne(sm => sm.Major)
+                    .WithMany(m => m.StudentMajors)
+                    .HasForeignKey(sm => sm.MajorId),
+                j => j.HasOne(sm => sm.Student)
+                    .WithMany(s => s.StudentMajors)
+                    .HasForeignKey(sm => sm.StudentId),
+                j =>
+                {
+                    j.Property(sm => sm.score).HasDefaultValue(0);
+                    j.HasKey(t => new { t.StudentId, t.MajorId });
+                });
+
+        }
 
         public override async Task<bool> DataInit(object allModules, bool IsSpa)
         {

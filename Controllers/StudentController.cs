@@ -4,27 +4,27 @@ using System;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
-using Blog.ViewModels.SchoolVMs;
+using Blog.ViewModels.StudentVMs;
 
 namespace Blog.Controllers
 {
     
-    [ActionDescription("学校")]
-    public partial class SchoolController : BaseController
+    [ActionDescription("学生")]
+    public partial class StudentController : BaseController
     {
         #region Search
         [ActionDescription("Sys.Search")]
         public ActionResult Index()
         {
-            var vm = Wtm.CreateVM<SchoolListVM>();
+            var vm = Wtm.CreateVM<StudentListVM>();
             return PartialView(vm);
         }
 
         [ActionDescription("Sys.Search")]
         [HttpPost]
-        public string Search(SchoolSearcher searcher)
+        public string Search(StudentSearcher searcher)
         {
-            var vm = Wtm.CreateVM<SchoolListVM>(passInit: true);
+            var vm = Wtm.CreateVM<StudentListVM>(passInit: true);
             if (ModelState.IsValid)
             {
                 vm.Searcher = searcher;
@@ -42,13 +42,13 @@ namespace Blog.Controllers
         [ActionDescription("Sys.Create")]
         public ActionResult Create()
         {
-            var vm = Wtm.CreateVM<SchoolVM>();
+            var vm = Wtm.CreateVM<StudentVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Create")]
-        public ActionResult Create(SchoolVM vm)
+        public ActionResult Create(StudentVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -74,14 +74,14 @@ namespace Blog.Controllers
         [ActionDescription("Sys.Edit")]
         public ActionResult Edit(string id)
         {
-            var vm = Wtm.CreateVM<SchoolVM>(id);
+            var vm = Wtm.CreateVM<StudentVM>(id);
             return PartialView(vm);
         }
 
         [ActionDescription("Sys.Edit")]
         [HttpPost]
         [ValidateFormItemOnly]
-        public ActionResult Edit(SchoolVM vm)
+        public ActionResult Edit(StudentVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace Blog.Controllers
         [ActionDescription("Sys.Delete")]
         public ActionResult Delete(string id)
         {
-            var vm = Wtm.CreateVM<SchoolVM>(id);
+            var vm = Wtm.CreateVM<StudentVM>(id);
             return PartialView(vm);
         }
 
@@ -115,7 +115,7 @@ namespace Blog.Controllers
         [HttpPost]
         public ActionResult Delete(string id, IFormCollection nouse)
         {
-            var vm = Wtm.CreateVM<SchoolVM>(id);
+            var vm = Wtm.CreateVM<StudentVM>(id);
             vm.DoDelete();
             if (!ModelState.IsValid)
             {
@@ -132,7 +132,7 @@ namespace Blog.Controllers
         [ActionDescription("Sys.Details")]
         public ActionResult Details(string id)
         {
-            var vm = Wtm.CreateVM<SchoolVM>(id);
+            var vm = Wtm.CreateVM<StudentVM>(id);
             return PartialView(vm);
         }
         #endregion
@@ -142,13 +142,13 @@ namespace Blog.Controllers
         [ActionDescription("Sys.BatchEdit")]
         public ActionResult BatchEdit(string[] IDs)
         {
-            var vm = Wtm.CreateVM<SchoolBatchVM>(Ids: IDs);
+            var vm = Wtm.CreateVM<StudentBatchVM>(Ids: IDs);
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.BatchEdit")]
-        public ActionResult DoBatchEdit(SchoolBatchVM vm, IFormCollection nouse)
+        public ActionResult DoBatchEdit(StudentBatchVM vm, IFormCollection nouse)
         {
             if (!ModelState.IsValid || !vm.DoBatchEdit())
             {
@@ -166,13 +166,13 @@ namespace Blog.Controllers
         [ActionDescription("Sys.BatchDelete")]
         public ActionResult BatchDelete(string[] IDs)
         {
-            var vm = Wtm.CreateVM<SchoolBatchVM>(Ids: IDs);
+            var vm = Wtm.CreateVM<StudentBatchVM>(Ids: IDs);
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.BatchDelete")]
-        public ActionResult DoBatchDelete(SchoolBatchVM vm, IFormCollection nouse)
+        public ActionResult DoBatchDelete(StudentBatchVM vm, IFormCollection nouse)
         {
             if (!ModelState.IsValid || !vm.DoBatchDelete())
             {
@@ -189,13 +189,13 @@ namespace Blog.Controllers
 		[ActionDescription("Sys.Import")]
         public ActionResult Import()
         {
-            var vm = Wtm.CreateVM<SchoolImportVM>();
+            var vm = Wtm.CreateVM<StudentImportVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Import")]
-        public ActionResult Import(SchoolImportVM vm, IFormCollection nouse)
+        public ActionResult Import(StudentImportVM vm, IFormCollection nouse)
         {
             if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
             {
@@ -210,7 +210,7 @@ namespace Blog.Controllers
 
         [ActionDescription("Sys.Export")]
         [HttpPost]
-        public IActionResult ExportExcel(SchoolListVM vm)
+        public IActionResult ExportExcel(StudentListVM vm)
         {
             return vm.GetExportData();
         }

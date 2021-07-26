@@ -1,0 +1,13 @@
+﻿@model Blog.ViewModels.StudentMajorVMs.StudentMajorVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:display field="Entity.Student.LoginName" />
+<wt:display field="Entity.Major.MajorName" />
+<wt:display field="Entity.score" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

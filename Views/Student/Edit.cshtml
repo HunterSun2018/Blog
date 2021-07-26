@@ -1,0 +1,19 @@
+﻿@model Blog.ViewModels.StudentVMs.StudentVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.LoginName" />
+<wt:textbox field="Entity.Password" />
+<wt:textbox field="Entity.Name" />
+<wt:textbox field="Entity.CellPhone" />
+<wt:textbox field="Entity.ZipCode" />
+<wt:datetime field="Entity.EnRollDate" />
+<wt:upload field="Entity.PhotoId" />
+</wt:row>
+    <wt:hidden field="Entity.ID" />
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

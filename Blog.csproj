@@ -12,6 +12,10 @@
 
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.8">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="5.3.1" />
     <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="5.3.1" />
 </ItemGroup>

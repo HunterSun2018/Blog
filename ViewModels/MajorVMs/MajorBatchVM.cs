@@ -8,14 +8,14 @@ using WalkingTec.Mvvm.Core.Extensions;
 using Blog.Model;
 
 
-namespace Blog.ViewModels.SchoolVMs
+namespace Blog.ViewModels.MajorVMs
 {
-    public partial class SchoolBatchVM : BaseBatchVM<School, School_BatchEdit>
+    public partial class MajorBatchVM : BaseBatchVM<Major, Major_BatchEdit>
     {
-        public SchoolBatchVM()
+        public MajorBatchVM()
         {
-            ListVM = new SchoolListVM();
-            LinkedVM = new School_BatchEdit();
+            ListVM = new MajorListVM();
+            LinkedVM = new Major_BatchEdit();
         }
 
     }
@@ -23,7 +23,7 @@ namespace Blog.ViewModels.SchoolVMs
 	/// <summary>
     /// Class to define batch edit fields
     /// </summary>
-    public class School_BatchEdit : BaseVM
+    public class Major_BatchEdit : BaseVM
     {
 
         protected override void InitVM()

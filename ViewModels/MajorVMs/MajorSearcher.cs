@@ -8,9 +8,9 @@ using WalkingTec.Mvvm.Core.Extensions;
 using Blog.Model;
 
 
-namespace Blog.ViewModels.SchoolVMs
+namespace Blog.ViewModels.MajorVMs
 {
-    public partial class SchoolSearcher : BaseSearcher
+    public partial class MajorSearcher : BaseSearcher
     {
 
         protected override void InitVM()
