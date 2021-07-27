@@ -49,9 +49,10 @@ namespace Blog
                 j =>
                 {
                     j.Property(sm => sm.score).HasDefaultValue(0);
-                    j.HasKey(t => new { t.StudentId, t.MajorId });
+                    j.HasIndex(t => t.MajorId);
+                    j.HasIndex(t => t.StudentId);
+                    j.HasIndex(t => new { t.StudentId, t.MajorId }).IsUnique();
                 });
-
         }
 
         public override async Task<bool> DataInit(object allModules, bool IsSpa)

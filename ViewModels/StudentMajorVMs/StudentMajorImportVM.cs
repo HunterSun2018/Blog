@@ -14,6 +14,7 @@ namespace Blog.ViewModels.StudentMajorVMs
     {
         public ExcelPropety Student_Excel = ExcelPropety.CreateProperty<StudentMajor>(x => x.StudentId);
         public ExcelPropety Major_Excel = ExcelPropety.CreateProperty<StudentMajor>(x => x.MajorId);
+        [Display(Name = "分数")]
         public ExcelPropety score_Excel = ExcelPropety.CreateProperty<StudentMajor>(x => x.score);
 
 	    protected override void InitVM()

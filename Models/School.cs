@@ -54,7 +54,7 @@ namespace Blog.Model
         public School School { get; set; }
 
         [Display(Name = "学生")]
-        public List<Student> Students { get; set; }
+        public ICollection<Student> Students { get; set; }
         public List<StudentMajor> StudentMajors { get; set; }
     }
 
@@ -91,10 +91,12 @@ namespace Blog.Model
         public FileAttachment Photo { get; set; }
 
         [Display(Name = "专业")]
-        public List<Major> Majors { get; set; }
+        public ICollection<Major> Majors { get; set; }
         public List<StudentMajor> StudentMajors { get; set; }
     }
+
     // [MiddleTable]
+    //[Index(nameof(StudentId), nameof(MajorId)), IsUnique=true]
     public class StudentMajor : BasePoco
     {
         [Display(Name = "学生ID")]

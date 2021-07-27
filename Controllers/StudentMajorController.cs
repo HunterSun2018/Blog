@@ -9,7 +9,7 @@ using Blog.ViewModels.StudentMajorVMs;
 namespace Blog.Controllers
 {
     
-    [ActionDescription("课程")]
+    [ActionDescription("成绩")]
     public partial class StudentMajorController : BaseController
     {
         #region Search
